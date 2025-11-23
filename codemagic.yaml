@@ -7,16 +7,6 @@ workflows:
       events:
         - push
         - pull_request
-      workflow: android-build   # required in new schema
-      cancel_previous_builds: true
-      auto:
-        branch_patterns:
-          - pattern: "main"
-            include: true
-            source: true
-          - pattern: "master"
-            include: true
-            source: true
 
     environment:
       java: "17"
@@ -32,7 +22,7 @@ workflows:
       - name: Make Gradle wrapper executable
         script: chmod +x ./gradlew
 
-      - name: Clean
+      - name: Clean project
         script: ./gradlew clean
 
       - name: Build Debug APK
